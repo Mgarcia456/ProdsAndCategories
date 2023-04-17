@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model MyViewModel
+<div class="text-center d-flex justify-content-around">
+    <a href="/categories">add a category</a>
+    <div class="p-1">
+        <h2>New Product</h2>
+        @await Html.PartialAsync("_AddProduct", Model.Product)
+    </div>
+    <div class="p-1">
+        <h2>All Products</h2>
+        @foreach (Product p in Model.AllProducts)
+        {
+            <a href="/products/@p.ProductId">@p.Name</a><br>
+        }
+    </div>
+</div>

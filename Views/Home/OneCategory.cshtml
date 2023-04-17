@@ -1,0 +1,31 @@
+@model Association
+<a href="/">back</a>
+<br>
+<h1 class="text-center"></h1>
+<br>
+<form asp-action="ProdsToCat" asp-controller="Home" asp-route-CategoryId="@ViewBag.OneCat.CategoryId" method="post">
+    <div class="text-center d-flex justify-content-around">
+        <div class="p-1">
+            <h2>Products</h2>
+            <br>
+            <ul>
+                @foreach(Association p in @ViewBag.OneCat.ProductsIn)
+                {
+                    <li>@p.Product.Name</li>
+                }
+            </ul>
+        </div>
+        <div class="p-1">
+            <h2>Add Product</h2>
+            <br>
+            <label asp-for="ProductId">Product</label>
+            <select asp-for="ProductId" class="form-select">
+                @foreach (Product p in ViewBag.AllProducts)
+                {
+                    <option value="@p.ProductId">@p.Name</option>
+                }
+            </select>
+            <input type="submit" value="Add" class="btn btn-warning m-2">
+        </div>
+    </div>
+</form>

@@ -1,0 +1,16 @@
+@model MyViewModel
+<div class="text-center d-flex justify-content-around">
+    <div class="p-1">
+      <a href="/">back</a>
+        <h2>Add a Category</h2>
+        
+        @await Html.PartialAsync("_AddCategory", Model.Category)
+    </div>
+    <div class="p-1">
+        <h2>All Categories</h2>
+        @foreach (Category c in Model.AllCategories)
+        {
+            <a href="/categories/@c.CategoryId">@c.Name</a><br>
+        }
+    </div>
+</div>
